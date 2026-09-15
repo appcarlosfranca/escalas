@@ -466,103 +466,96 @@ footer{
   footer{display:block!important;background:#fff!important;color:#333!important;border-top:1px solid #aaa!important;padding:8px 0!important;font-size:9px!important} .screen-credit{display:none!important}.print-credit{display:inline!important}
 }
 
-/* V4 — escudo totalmente visível com halo neon circular dinâmico */
+/* V5 — logotipo compacto, bem enquadrado e com halo neon controlado */
 .logo{
-  width:88px;
-  height:94px;
-  flex:0 0 auto;
+  width:72px;
+  height:72px;
+  flex:0 0 72px;
   position:relative;
   display:grid;
   place-items:center;
+  align-self:center;
 }
 .logo-button{
   position:relative;
-  display:grid;
-  place-items:center;
   width:100%;
   height:100%;
-  padding:8px 10px;
-  border-radius:24px;
-  overflow:visible;
+  padding:0;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
   isolation:isolate;
-  background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(243,247,255,.74));
-  border:1px solid rgba(255,255,255,.42);
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.26);
+  background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(241,245,252,.92));
   box-shadow:
-    0 10px 28px rgba(0,0,0,.28),
-    inset 0 1px 0 rgba(255,255,255,.65),
-    inset 0 -1px 0 rgba(12,24,40,.08);
+    0 10px 24px rgba(0,0,0,.22),
+    inset 0 1px 0 rgba(255,255,255,.72),
+    inset 0 -1px 0 rgba(8,20,42,.08);
 }
 .logo-button::before{
   content:"";
   position:absolute;
-  left:50%;
-  top:50%;
-  width:110%;
-  aspect-ratio:1/1;
-  transform:translate(-50%,-50%);
+  inset:-9px;
   border-radius:999px;
-  background:
-    radial-gradient(circle, rgba(0,255,179,.22) 0 42%, rgba(0,255,179,0) 62%),
-    conic-gradient(from 0deg, rgba(0,255,179,.90), rgba(87,148,255,.95), rgba(179,86,255,.92), rgba(0,255,179,.90));
-  filter:blur(11px);
-  opacity:.92;
+  background:conic-gradient(from 0deg, rgba(0,255,194,.95), rgba(78,161,255,.98), rgba(177,97,255,.95), rgba(0,255,194,.95));
+  filter:blur(12px);
+  opacity:.82;
   z-index:-2;
-  animation:logoOrbit 7.5s linear infinite, logoPulse 2.8s ease-in-out infinite;
+  animation:logoOrbit 8.5s linear infinite, logoPulse 3s ease-in-out infinite;
 }
 .logo-button::after{
   content:"";
   position:absolute;
   inset:3px;
-  border-radius:21px;
-  background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(249,251,255,.86));
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.55), inset 0 0 22px rgba(44,137,255,.10);
+  border-radius:19px;
+  background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(247,250,255,.90));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.75), inset 0 0 18px rgba(43,134,255,.08);
   z-index:-1;
 }
 .logo-button img{
   display:block;
   width:100%;
   height:100%;
-  max-width:100%;
-  max-height:100%;
   object-fit:contain;
   object-position:center center;
+  transform:scale(1.18);
+  transform-origin:center center;
   border-radius:0;
-  transform:scale(.94);
-  filter:drop-shadow(0 4px 8px rgba(12,28,52,.18));
+  filter:drop-shadow(0 3px 6px rgba(12,28,52,.16));
 }
 .brand h1{
-  font-size:clamp(1.18rem,2.5vw,1.72rem);
+  font-size:clamp(1.16rem,2.3vw,1.68rem);
 }
 @keyframes logoOrbit{
-  from{transform:translate(-50%,-50%) rotate(0deg)}
-  to{transform:translate(-50%,-50%) rotate(360deg)}
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
 }
 @keyframes logoPulse{
-  0%,100%{opacity:.76;filter:blur(10px) saturate(1)}
-  50%{opacity:1;filter:blur(14px) saturate(1.18)}
+  0%,100%{opacity:.66;filter:blur(10px) saturate(1)}
+  50%{opacity:.96;filter:blur(14px) saturate(1.15)}
 }
 @media (max-width:900px){
-  .logo{width:80px;height:88px}
-  .logo-button{padding:7px 9px}
+  .logo{width:68px;height:68px;flex-basis:68px}
 }
 @media (max-width:640px){
-  .logo{width:72px;height:80px}
-  .logo-button{padding:6px 8px;border-radius:22px}
-  .logo-button::after{border-radius:19px}
+  .logo{width:62px;height:62px;flex-basis:62px}
+  .logo-button{border-radius:20px}
+  .logo-button::after{border-radius:17px}
 }
 @media (max-width:480px){
-  .logo{width:64px;height:72px}
-  .logo-button{padding:5px 7px;border-radius:20px}
-  .logo-button::before{width:118%}
-  .logo-button::after{border-radius:17px}
-  .brand h1{font-size:clamp(1.02rem,7vw,1.34rem)}
+  .logo{width:56px;height:56px;flex-basis:56px}
+  .logo-button{border-radius:18px}
+  .logo-button::after{border-radius:15px}
+  .logo-button img{transform:scale(1.16)}
+  .brand h1{font-size:clamp(1rem,7vw,1.28rem)}
 }
 @media (max-width:360px){
-  .logo{width:58px;height:66px}
+  .logo{width:52px;height:52px;flex-basis:52px}
 }
 @media (orientation:landscape) and (max-height:560px){
-  .logo{width:54px;height:60px}
-  .logo-button{padding:4px 6px}
+  .logo{width:50px;height:50px;flex-basis:50px}
+  .logo-button img{transform:scale(1.12)}
 }
 </style>
 </head>
