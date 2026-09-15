@@ -3,8 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#10162b">
-<title>Escala UE — Organizador Equitativo v5</title>
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Escala UE — MED X</title>
 <style>
 :root{
   --bg:#080b18;--panel:#11172d;--panel2:#171f3c;--text:#f5f7ff;--muted:#aeb8d6;
@@ -50,6 +53,402 @@ footer{padding:22px 0 32px;color:var(--muted);text-align:center;line-height:1.65
 .logo-preview-box img{display:block;max-width:100%;max-height:82vh;width:auto;height:auto;object-fit:contain;border-radius:16px;background:#fff}
 .logo-preview-top{width:100%;display:flex;justify-content:flex-end}
 .creator-mark{margin-top:8px;font-weight:850;color:var(--text);letter-spacing:.02em}
+
+
+/* ==========================================================
+   FINAL — Interface inspirada no design de aplicativos iOS
+   Camada visual responsiva; não altera as regras do gerador.
+   ========================================================== */
+:root{
+  --ios-blue:#0a84ff;
+  --ios-cyan:#64d2ff;
+  --ios-green:#30d158;
+  --ios-red:#ff453a;
+  --ios-orange:#ff9f0a;
+  --ios-yellow:#ffd60a;
+  --ios-purple:#bf5af2;
+  --bg:#000000;
+  --panel:rgba(28,28,30,.78);
+  --panel2:rgba(44,44,46,.70);
+  --text:#f5f5f7;
+  --muted:#98989f;
+  --accent:var(--ios-blue);
+  --accent2:var(--ios-cyan);
+  --good:var(--ios-green);
+  --bad:var(--ios-red);
+  --warn:var(--ios-orange);
+  --border:rgba(255,255,255,.12);
+  --shadow:0 18px 60px rgba(0,0,0,.34);
+  --glow:0 10px 35px rgba(10,132,255,.22);
+  --page-gap:clamp(10px,2vw,26px);
+  --touch-size:44px;
+  --ios-radius:26px;
+  --ios-radius-sm:16px;
+}
+body.light{
+  --bg:#f2f2f7;
+  --panel:rgba(255,255,255,.82);
+  --panel2:rgba(242,242,247,.88);
+  --text:#111114;
+  --muted:#6e6e73;
+  --border:rgba(60,60,67,.16);
+  --shadow:0 14px 42px rgba(0,0,0,.09);
+  --glow:0 10px 30px rgba(0,122,255,.14);
+}
+html{
+  font-size:clamp(14px,.22vw + 13.4px,17px);
+  background:var(--bg);
+  min-height:100%;
+}
+body{
+  min-height:100dvh;
+  background:
+    radial-gradient(circle at 8% -4%,rgba(10,132,255,.15),transparent 29rem),
+    radial-gradient(circle at 100% 12%,rgba(100,210,255,.09),transparent 30rem),
+    var(--bg);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Arial,sans-serif;
+  padding-bottom:max(0px,env(safe-area-inset-bottom));
+}
+body::before{
+  opacity:0;
+  background:none;
+}
+.shell{
+  width:min(1540px,calc(100% - (2 * var(--page-gap))));
+}
+.topbar{
+  top:0;
+  padding:max(8px,env(safe-area-inset-top)) 0 8px;
+  border-bottom:0;
+  background:linear-gradient(to bottom,color-mix(in srgb,var(--bg) 84%,transparent),color-mix(in srgb,var(--bg) 58%,transparent));
+  backdrop-filter:saturate(180%) blur(24px);
+  -webkit-backdrop-filter:saturate(180%) blur(24px);
+}
+.topline{
+  padding:10px 12px;
+  border:1px solid var(--border);
+  border-radius:28px;
+  background:color-mix(in srgb,var(--panel) 84%,transparent);
+  box-shadow:0 10px 35px rgba(0,0,0,.16);
+  backdrop-filter:saturate(180%) blur(26px);
+  -webkit-backdrop-filter:saturate(180%) blur(26px);
+}
+.brand{gap:12px}
+.logo{width:62px;height:62px}
+.logo-button{
+  border-radius:18px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.96);
+  box-shadow:0 7px 20px rgba(0,0,0,.16);
+}
+.logo-button:hover{transform:scale(1.025);box-shadow:var(--glow)}
+.brand h1{
+  font-weight:800;
+  letter-spacing:-.035em;
+  font-size:clamp(1.16rem,2vw,1.52rem);
+}
+.brand small{
+  color:var(--muted);
+  font-weight:520;
+  letter-spacing:-.012em;
+}
+.actions{
+  gap:7px;
+}
+.btn,.iconbtn{
+  min-height:44px;
+  border-radius:999px;
+  padding:9px 14px;
+  border:1px solid var(--border);
+  background:color-mix(in srgb,var(--panel2) 76%,transparent);
+  box-shadow:none;
+  font-weight:680;
+  letter-spacing:-.012em;
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
+.btn:hover,.iconbtn:hover{
+  transform:translateY(-1px);
+  border-color:rgba(10,132,255,.44);
+  box-shadow:0 7px 22px rgba(10,132,255,.12);
+}
+.btn:active,.iconbtn:active{transform:scale(.975)}
+.btn.primary{
+  background:var(--ios-blue);
+  border-color:transparent;
+  box-shadow:0 8px 22px rgba(10,132,255,.24);
+}
+.btn.good{
+  background:color-mix(in srgb,var(--ios-green) 16%,var(--panel));
+  border-color:color-mix(in srgb,var(--ios-green) 34%,transparent);
+  color:color-mix(in srgb,var(--ios-green) 82%,white 18%);
+}
+.btn.bad{background:color-mix(in srgb,var(--ios-red) 13%,var(--panel));border-color:color-mix(in srgb,var(--ios-red) 34%,transparent)}
+.btn.warn{background:color-mix(in srgb,var(--ios-orange) 14%,var(--panel));border-color:color-mix(in srgb,var(--ios-orange) 34%,transparent)}
+.iconbtn{width:44px;height:44px;padding:0}
+.nav{
+  width:max-content;
+  max-width:100%;
+  margin:8px auto 0;
+  padding:4px;
+  gap:2px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:color-mix(in srgb,var(--panel) 82%,transparent);
+  box-shadow:0 8px 28px rgba(0,0,0,.12);
+  backdrop-filter:saturate(180%) blur(24px);
+  -webkit-backdrop-filter:saturate(180%) blur(24px);
+}
+.nav button{
+  min-height:38px;
+  padding:7px 14px;
+  border-radius:999px;
+  font-size:.88rem;
+  font-weight:700;
+  color:var(--muted);
+}
+.nav button.active{
+  color:#fff;
+  background:var(--ios-blue);
+  box-shadow:0 5px 14px rgba(10,132,255,.24);
+}
+body.light .nav button.active{color:#fff}
+main{padding:clamp(14px,2.4vw,28px) 0 clamp(34px,5vw,66px)}
+.card{
+  border-radius:var(--ios-radius);
+  border:1px solid var(--border);
+  background:linear-gradient(180deg,color-mix(in srgb,var(--panel) 96%,white 1%),color-mix(in srgb,var(--panel2) 88%,transparent));
+  box-shadow:var(--shadow);
+  backdrop-filter:saturate(160%) blur(20px);
+  -webkit-backdrop-filter:saturate(160%) blur(20px);
+}
+.card.pad{padding:clamp(16px,2vw,24px)}
+.hero{gap:clamp(12px,1.5vw,18px);margin-bottom:20px}
+.hero-main{
+  min-height:250px;
+  padding:clamp(22px,3vw,34px);
+}
+.hero-main::after{
+  content:"MED X";
+  font-size:clamp(4rem,11vw,9rem);
+  right:3%;bottom:-10px;
+  letter-spacing:-.07em;
+  opacity:.035;
+}
+.kicker{
+  color:var(--ios-cyan);
+  font-size:.72rem;
+  letter-spacing:.11em;
+}
+.hero h2{
+  font-size:clamp(2rem,5vw,3.8rem);
+  letter-spacing:-.055em;
+  line-height:1.01;
+}
+.hero p{color:var(--muted);line-height:1.58}
+.stat{
+  border-radius:20px;
+  border:1px solid var(--border);
+  background:color-mix(in srgb,var(--panel2) 68%,transparent);
+  padding:15px;
+}
+.stat strong{letter-spacing:-.04em}
+.section-head{margin:24px 0 12px}
+.section-head h2,.section-head h3{letter-spacing:-.035em}
+.section-head p{line-height:1.45}
+input,select,textarea{
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:color-mix(in srgb,var(--panel2) 72%,transparent);
+  padding:11px 13px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
+}
+input:focus,select:focus,textarea:focus{
+  border-color:var(--ios-blue);
+  box-shadow:0 0 0 4px rgba(10,132,255,.13);
+}
+.tag{
+  border-radius:999px;
+  background:color-mix(in srgb,var(--panel2) 66%,transparent);
+}
+.table-wrap{
+  border-radius:20px;
+  background:color-mix(in srgb,var(--panel) 78%,transparent);
+  box-shadow:inset 0 0 0 1px var(--border);
+  border:0;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(255,255,255,.22) transparent;
+}
+.table-wrap::-webkit-scrollbar{height:8px;width:8px}
+.table-wrap::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:999px}
+table{border-collapse:separate;border-spacing:0}
+th,td{border-bottom:1px solid var(--border)}
+th{
+  background:color-mix(in srgb,var(--panel2) 88%,transparent);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  font-weight:720;
+}
+.week-card{margin-bottom:16px;overflow:visible}
+.week-head{
+  padding:15px 17px;
+  background:linear-gradient(90deg,rgba(10,132,255,.13),rgba(100,210,255,.035));
+  border-bottom:1px solid var(--border);
+}
+.schedule-table{min-width:1160px}
+.schedule-table th:first-child,.schedule-table td:first-child{
+  background:color-mix(in srgb,var(--panel) 96%,transparent);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+}
+.schedule-table th:not(:first-child),.schedule-table td:not(:first-child){min-width:142px}
+.cell{min-height:68px;gap:5px}
+.person-chip{
+  border-radius:999px;
+  padding:5px 9px;
+  background:rgba(10,132,255,.12);
+  border-color:rgba(10,132,255,.22);
+  font-weight:650;
+}
+.person-chip.y5{
+  background:rgba(100,210,255,.11);
+  border-color:rgba(100,210,255,.22);
+}
+.slot-cell:hover{background:rgba(10,132,255,.055)}
+.slot-cell.cell-error{
+  box-shadow:inset 0 0 0 2px rgba(255,69,58,.72);
+  background:rgba(255,69,58,.07);
+}
+.student-row,.rule-note,.alert,.check{
+  border-radius:18px;
+  background:color-mix(in srgb,var(--panel2) 62%,transparent);
+}
+.modal{
+  background:rgba(0,0,0,.52);
+  backdrop-filter:saturate(150%) blur(20px);
+  -webkit-backdrop-filter:saturate(150%) blur(20px);
+}
+.modal-box,.logo-preview-box{border-radius:30px}
+.toast{
+  border-radius:20px;
+  background:color-mix(in srgb,var(--panel) 94%,black 4%);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+}
+footer{
+  padding:20px 0 max(28px,env(safe-area-inset-bottom));
+  border-top:0;
+  font-size:.85rem;
+}
+.creator-mark{font-weight:700}
+
+/* Ajuste progressivo por largura de tela */
+@media (min-width:1200px){
+  .hero{grid-template-columns:minmax(0,1.38fr) minmax(330px,.62fr)}
+  .mini-stats{grid-template-columns:1fr 1fr}
+}
+@media (max-width:1100px){
+  .topline{align-items:flex-start}
+  .brand{flex-basis:100%}
+  .actions{width:100%;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px;scrollbar-width:none}
+  .actions::-webkit-scrollbar{display:none}
+  .actions>*{flex:0 0 auto}
+  .hero{grid-template-columns:1fr}
+  .mini-stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media (max-width:820px){
+  :root{--page-gap:10px}
+  .topbar{padding-top:max(6px,env(safe-area-inset-top))}
+  .topline{border-radius:22px;padding:9px 10px}
+  .logo{width:54px;height:54px}
+  .logo-button{border-radius:15px}
+  .brand small{max-width:none;white-space:normal;line-height:1.25;font-size:.78rem}
+  .actions{margin-inline:-2px;padding-inline:2px;scroll-snap-type:x proximity}
+  .actions .btn,.actions .iconbtn{scroll-snap-align:start;min-height:42px}
+  .nav{
+    width:100%;
+    max-width:100%;
+    justify-content:flex-start;
+    overflow-x:auto;
+    margin-top:7px;
+    scroll-snap-type:x mandatory;
+  }
+  .nav button{scroll-snap-align:start;flex:0 0 auto}
+  .hero-main{min-height:auto}
+  .hero h2{font-size:clamp(1.85rem,7.5vw,3rem)}
+  .mini-stats{grid-template-columns:1fr 1fr}
+  .grid4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .week-head{align-items:flex-start}
+  .schedule-table{min-width:1080px}
+  .schedule-table th:not(:first-child),.schedule-table td:not(:first-child){min-width:132px}
+  .student-row{grid-template-columns:1fr}
+  .student-row .sector-pills,.student-row .row-actions{grid-column:auto}
+}
+@media (max-width:560px){
+  html{font-size:15px}
+  .shell{width:calc(100% - 18px)}
+  .topline{gap:9px}
+  .brand{gap:10px}
+  .brand h1{font-size:1.08rem}
+  .logo{width:48px;height:48px}
+  .actions{gap:6px}
+  .actions .btn{padding:8px 12px;font-size:.82rem}
+  .actions .iconbtn{width:40px;height:40px}
+  .actions .btn .label{display:none}
+  .nav{border-radius:18px;padding:3px}
+  .nav button{min-height:36px;padding:7px 12px;font-size:.82rem}
+  main{padding-top:12px}
+  .card{border-radius:22px}
+  .hero-main{padding:20px}
+  .hero p{font-size:.94rem}
+  .hero-ctas{display:grid;grid-template-columns:1fr;gap:8px}
+  .hero-ctas .btn{width:100%}
+  .mini-stats{gap:9px;padding:11px}
+  .stat{padding:12px;border-radius:17px}
+  .stat strong{font-size:1.3rem}
+  .grid4,.grid3,.grid2{grid-template-columns:1fr}
+  .section-head{margin-top:19px}
+  .section-head>div:last-child:not(:first-child),
+  #view-schedule .section-head>div:last-child{width:100%;display:flex;overflow-x:auto;flex-wrap:nowrap!important;gap:6px;padding-bottom:2px;scrollbar-width:none}
+  #view-schedule .section-head>div:last-child::-webkit-scrollbar{display:none}
+  #view-schedule .section-head>div:last-child .btn{flex:0 0 auto;white-space:nowrap}
+  .week-card{border-radius:20px}
+  .week-head{padding:13px 14px;gap:7px}
+  .schedule-table{min-width:1000px;font-size:.9rem}
+  .schedule-table th:first-child,.schedule-table td:first-child{min-width:142px}
+  .schedule-table th:not(:first-child),.schedule-table td:not(:first-child){min-width:122px}
+  .cell{min-height:62px}
+  .person-chip{font-size:.72rem;padding:5px 8px}
+  .slot-grid{grid-template-columns:1fr 72px 72px}
+  .modal{padding:8px}
+  .modal-box{border-radius:24px;max-height:94dvh}
+  .toast{left:9px;right:9px;bottom:max(10px,env(safe-area-inset-bottom));max-width:none}
+}
+@media (max-width:360px){
+  .shell{width:calc(100% - 12px)}
+  .brand small{display:none}
+  .topline{padding:8px}
+  .actions .btn{padding-inline:10px}
+  .mini-stats{grid-template-columns:1fr}
+  .schedule-table{min-width:940px}
+}
+@media (orientation:landscape) and (max-height:560px){
+  .topbar{position:sticky}
+  .logo{width:44px;height:44px}
+  .brand small{display:none}
+  .topline{padding-block:7px}
+  .nav{margin-top:5px}
+  main{padding-top:10px}
+}
+@media (hover:none){
+  .btn:hover,.iconbtn:hover,.logo-button:hover{transform:none;box-shadow:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
+
 @media print{
   @page{size:A4 landscape;margin:8mm}
   body{background:#fff!important;color:#111!important;overflow:visible!important}
@@ -230,7 +629,8 @@ const SECTORS=[
 ];
 const STORAGE_KEY='escalaUE_v2';
 const DEFAULT_START='2026-09-21';
-const SCHEMA_VERSION=8;
+const SCHEMA_VERSION=9;
+const INTERNAL_COMMON = Object.freeze({ postNightRest:true });
 // Restrições operacionais internas. Não são expostas como opções na interface.
 const INTERNAL_6 = Object.freeze({
  noUtiDays:['thu','sat','sun'],
@@ -264,6 +664,45 @@ function effectiveCapacity(year,week,dkey,sectorId){
 function countYearInCell(year,w,dkey,sectorId,source=state.schedule){
  const arr=source?.[w]?.[dkey]?.[sectorId]||[];
  return arr.map(studentById).filter(Boolean).filter(st=>st.active&&st.year===year).length;
+}
+
+function nextDayRef(w,dkey){
+ const i=DAYS.findIndex(d=>d.key===dkey);
+ if(i<0)return null;
+ if(i<6)return {w,dkey:DAYS[i+1].key};
+ if(w<7)return {w:w+1,dkey:DAYS[0].key};
+ return null;
+}
+function prevDayRef(w,dkey){
+ const i=DAYS.findIndex(d=>d.key===dkey);
+ if(i<0)return null;
+ if(i>0)return {w,dkey:DAYS[i-1].key};
+ if(w>1)return {w:w-1,dkey:DAYS[6].key};
+ return null;
+}
+function sourceHasStudentOnDay(source,w,dkey,studentId){
+ if(!source?.[w]?.[dkey])return false;
+ return SECTORS.some(sec=>(source[w][dkey][sec.id]||[]).includes(studentId));
+}
+function sourceHasNight(source,w,dkey,studentId){
+ return !!source?.[w]?.[dkey]?.eixo_n?.includes(studentId);
+}
+function isPostNightRestDay(source,w,dkey,studentId){
+ if(!INTERNAL_COMMON.postNightRest)return false;
+ const prev=prevDayRef(w,dkey);
+ return !!prev&&sourceHasNight(source,prev.w,prev.dkey,studentId);
+}
+function postNightRestSatisfied(source,students){
+ if(!INTERNAL_COMMON.postNightRest)return true;
+ const ids=new Set(students.map(s=>s.id));
+ for(let w=1;w<=7;w++)for(const d of DAYS){
+  for(const id of source?.[w]?.[d.key]?.eixo_n||[]){
+   if(!ids.has(id))continue;
+   const nxt=nextDayRef(w,d.key);
+   if(nxt&&sourceHasStudentOnDay(source,nxt.w,nxt.dkey,id))return false;
+  }
+ }
+ return true;
 }
 function dynamicMax5(w,dkey,sectorId,source=state.schedule){
  const six=countYearInCell('6',w,dkey,sectorId,source);
@@ -472,7 +911,7 @@ function renderSchedule(){
  cont.innerHTML=html;
  cont.querySelectorAll('.slot-cell').forEach(td=>td.addEventListener('click',()=>openSlot(+td.dataset.w,td.dataset.day,td.dataset.sector)));
 }
-function isAssignmentInvalid(id,w,dkey,sectorId){const s=studentById(id);if(!s)return true;if(!s.allowed.includes(sectorId))return true;if(s.year==='6'&&sectorId==='uti_hul'&&(INTERNAL_6.noUtiDays.includes(dkey)||dkey===extraEixoDay(w)))return true;if(s.year==='5'&&countYearInCell('5',w,dkey,sectorId)>dynamicMax5(w,dkey,sectorId))return true;const count=countAssignedOnDay(id,w,dkey);return count>state.rules[s.year].maxPerDay;}
+function isAssignmentInvalid(id,w,dkey,sectorId){const s=studentById(id);if(!s)return true;if(!s.allowed.includes(sectorId))return true;if(isPostNightRestDay(state.schedule,w,dkey,id))return true;if(s.year==='6'&&sectorId==='uti_hul'&&(INTERNAL_6.noUtiDays.includes(dkey)||dkey===extraEixoDay(w)))return true;if(s.year==='5'&&countYearInCell('5',w,dkey,sectorId)>dynamicMax5(w,dkey,sectorId))return true;const count=countAssignedOnDay(id,w,dkey);return count>state.rules[s.year].maxPerDay;}
 function openSlot(w,dkey,sectorId){
  editingSlot={w,dkey,sectorId};const sec=sectorById(sectorId),day=DAYS.find(d=>d.key===dkey);document.getElementById('slotModalTitle').textContent=`${sec.name} — Semana ${w}`;document.getElementById('slotModalSub').textContent=`${day.label} · ${fmtDate(dayDate(w,DAYS.findIndex(d=>d.key===dkey)))} · ${sec.time}`;
  const selected=new Set(state.schedule[w][dkey][sectorId]||[]);
@@ -579,6 +1018,8 @@ function generateYear6Pattern(){
   }
  }
 
+ if(!postNightRestSatisfied(local,ordered))return null;
+
  // Equidade global do 6º ano: 18 Eixos + 3 UTIs + 7 noturnos, 4 sábados e 4 domingos.
  for(const st of ordered){
   let sat=0,sun=0,satNight=0,sunNight=0,eixo=0,uti=0,night=0;
@@ -612,6 +1053,7 @@ function generateYear5Pattern(){
   const globalSun=Object.fromEntries(students.map(st=>[st.id,0]));
   const globalTotal=Object.fromEntries(students.map(st=>[st.id,0]));
   let failed=false;
+  let carryRestMonday=new Set();
 
   for(let w=1;w<=7&&!failed;w++){
    const nightDayByStudent={};
@@ -619,7 +1061,7 @@ function generateYear5Pattern(){
    // Um 5º-anista por noite em todos os dias + uma segunda vaga apenas na segunda-feira.
    const nightSlots=['sat','sun','tue','wed','thu','fri','mon',INTERNAL_5.overflowNightDay];
    for(const dkey of nightSlots){
-    const candidates=students.filter(st=>unused.has(st.id)&&st.allowed.includes('eixo_n'));
+    const candidates=students.filter(st=>unused.has(st.id)&&st.allowed.includes('eixo_n')&&!(dkey==='mon'&&carryRestMonday.has(st.id)));
     if(!candidates.length){failed=true;break;}
     candidates.sort((a,b)=>{
      const wa=dkey==='sat'?globalSat[a.id]:(dkey==='sun'?globalSun[a.id]:0);
@@ -632,6 +1074,11 @@ function generateYear5Pattern(){
     if(dkey==='sat')globalSat[st.id]++;if(dkey==='sun')globalSun[st.id]++;
    }
    if(failed)break;
+   const restDayByStudent={};
+   for(const [sid,nightDay] of Object.entries(nightDayByStudent)){
+    const ni=DAYS.findIndex(d=>d.key===nightDay);
+    if(ni>=0&&ni<6)restDayByStudent[sid]=DAYS[ni+1].key;
+   }
 
    const slots=[];
    for(const d of DAYS){
@@ -663,7 +1110,7 @@ function generateYear5Pattern(){
      if(need===0)continue;
      const possible=new Set();
      for(const sl of remaining){
-      if(sl.dkey===nightDayByStudent[st.id]||usedDays[st.id].has(sl.dkey))continue;
+      if(sl.dkey===nightDayByStudent[st.id]||restDayByStudent[st.id]===sl.dkey||(sl.dkey==='mon'&&carryRestMonday.has(st.id))||usedDays[st.id].has(sl.dkey))continue;
       if(st.allowed.includes(sl.sectorId))possible.add(sl.dkey);
      }
      if(possible.size<need)return false;
@@ -677,6 +1124,8 @@ function generateYear5Pattern(){
     const candidates=students.filter(st=>
      dayCount[st.id]<r.dayTarget&&
      nightDayByStudent[st.id]!==sl.dkey&&
+     restDayByStudent[st.id]!==sl.dkey&&
+     !(sl.dkey==='mon'&&carryRestMonday.has(st.id))&&
      !usedDays[st.id].has(sl.dkey)&&
      st.allowed.includes(sl.sectorId)
     );
@@ -722,8 +1171,10 @@ function generateYear5Pattern(){
     }
     if(failed)break;
    }
+   if(!failed)carryRestMonday=new Set(local[w].sun.eixo_n);
   }
   if(failed)continue;
+  if(!postNightRestSatisfied(local,students))continue;
 
   // Equidade global: cada aluno mantém 21 diurnos + 7 noturnos; setores e fins de semana variam no máximo 1.
   const satVals=students.map(st=>globalSat[st.id]),sunVals=students.map(st=>globalSun[st.id]);
@@ -763,17 +1214,19 @@ function generateYearGeneric(year){
    for(const d of DAYS)for(const sec of SECTORS){const cap=effectiveCapacity(year,w,d.key,sec.id);for(let k=0;k<cap;k++)slots.push({dkey:d.key,sectorId:sec.id,type:sec.type,week:w,slot:k});}
    // Primeiro os plantões noturnos de fim de semana, depois demais fins de semana e setores restritos.
    slots.sort((a,b)=>{
+    const at=a.type==='night'?0:1,bt=b.type==='night'?0:1;
     const an=(a.sectorId==='eixo_n'&&(a.dkey==='sat'||a.dkey==='sun'))?0:1;
     const bn=(b.sectorId==='eixo_n'&&(b.dkey==='sat'||b.dkey==='sun'))?0:1;
     const aw=(a.dkey==='sat'||a.dkey==='sun')?0:1,bw=(b.dkey==='sat'||b.dkey==='sun')?0:1;
     const ae=students.filter(s=>s.allowed.includes(a.sectorId)).length,be=students.filter(s=>s.allowed.includes(b.sectorId)).length;
-    return an-bn||aw-bw||ae-be||(Math.random()-.5);
+    return at-bt||an-bn||aw-bw||ae-be||(Math.random()-.5);
    });
    for(const slot of slots){
     const candidates=students.filter(s=>{
      if(!s.allowed.includes(slot.sectorId))return false;
      const wc=weekCounts[s.id];
      if((wc.days[slot.dkey]||0)>=r.maxPerDay)return false;
+     if(isPostNightRestDay(local,slot.week,slot.dkey,s.id))return false;
      if(slot.type==='day'&&wc.day>=r.dayTarget)return false;
      if(slot.type==='night'&&wc.night>=r.nightTarget)return false;
      if(year==='6'&&slot.sectorId==='uti_hul'&&(INTERNAL_6.noUtiDays.includes(slot.dkey)||slot.dkey===extraEixoDay(slot.week)))return false;
@@ -818,6 +1271,7 @@ function generateYearGeneric(year){
    if(!failed){for(const s of students){const wc=weekCounts[s.id];if(wc.day!==r.dayTarget||wc.night!==r.nightTarget){failed=true;break;}}}
   }
   if(failed)continue;
+  if(!postNightRestSatisfied(local,students))continue;
   const satVals=Object.values(global.sat),sunVals=Object.values(global.sun);
   const weekendOk=!r.weekendBalance||((Math.max(...satVals)-Math.min(...satVals)<=1)&&(Math.max(...sunVals)-Math.min(...sunVals)<=1));
   let weekendNightOk=true;
@@ -891,6 +1345,22 @@ function validateSchedule(extraErrors=[]){
   for(let w=1;w<=7;w++){
    if(m.week[w].day!==r.dayTarget){errors.push(`${s.name}: semana ${w} possui ${m.week[w].day} diurno(s); regra = ${r.dayTarget}.`);m.violations++;}
    if(m.week[w].night!==r.nightTarget){errors.push(`${s.name}: semana ${w} possui ${m.week[w].night} noturno(s); regra = ${r.nightTarget}.`);m.violations++;}
+  }
+ }
+ // Regra interna comum: quem faz Eixo noturno fica de folga no dia seguinte.
+ if(INTERNAL_COMMON.postNightRest){
+  for(let w=1;w<=7;w++)for(const d of DAYS){
+   const nightIds=state.schedule[w][d.key]?.eixo_n||[];
+   const nxt=nextDayRef(w,d.key);
+   if(!nxt)continue;
+   for(const id of nightIds){
+    const st=studentById(id);if(!st||!st.active)continue;
+    if(sourceHasStudentOnDay(state.schedule,nxt.w,nxt.dkey,id)){
+     const nd=DAYS.find(x=>x.key===nxt.dkey);
+     errors.push(`${st.name}: após Eixo noturno na semana ${w}, ${d.label}, deve folgar no dia seguinte (semana ${nxt.w}, ${nd?.label||nxt.dkey}).`);
+     if(metrics[id])metrics[id].violations++;
+    }
+   }
   }
  }
  // Validações internas específicas do 6º ano.
